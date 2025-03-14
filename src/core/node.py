@@ -1,8 +1,8 @@
 """
 Basic implementation of a concept node in the node-based neural network architecture.
 """
+from typing import Dict, List, Optional, Set, Tuple, Union, Any
 import numpy as np
-from typing import Dict, List, Optional, Set, Tuple
 
 
 class Node:
@@ -84,6 +84,7 @@ class Node:
         for node_id, (node, weight) in self.connections.items():
             # Propagate weighted activation to connected node
             input_signal = self.state * self.activation_level * weight
+            
             node_activation = node.activate(input_signal)
             
             if node.is_active:

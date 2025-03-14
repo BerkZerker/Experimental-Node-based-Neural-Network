@@ -4,7 +4,6 @@ A simple experiment to demonstrate node activation and propagation.
 import sys
 import os
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Add the src directory to the path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -45,54 +44,28 @@ def create_simple_network():
     }
 
 
-def visualize_activation(nodes, active_nodes):
-    """Visualize which nodes are active."""
-    plt.figure(figsize=(8, 6))
+def print_network_state(nodes, active_nodes):
+    """Print a text-based visualization of the network."""
+    print("\nNetwork State:")
+    print("-------------")
     
-    # Create positions for the nodes
-    positions = {
-        "cat": (0, 0),
-        "pet": (1, 0),
-        "dog": (2, 0),
-        "animal": (1, 1)
-    }
-    
-    # Draw connections
+    # Print nodes and their activation status
     for node_id, node in nodes.items():
-        for conn_id in node.connections:
-            conn_node = nodes.get(conn_id)
-            if conn_node:
-                plt.plot(
-                    [positions[node_id][0], positions[conn_id][0]],
-                    [positions[node_id][1], positions[conn_id][1]],
-                    'k-', alpha=0.3
-                )
+        status = "ACTIVE" if node_id in active_nodes else "inactive"
+        connections = ", ".join(node.connections.keys())
+        print(f"Node: {node_id.upper()} [{status}]")
+        print(f"  - Activation: {node.activation_level:.4f}")
+        print(f"  - Connections: {connections}")
     
-    # Draw nodes
-    for node_id, node in nodes.items():
-        color = 'r' if node_id in active_nodes else 'b'
-        alpha = 1.0 if node_id in active_nodes else 0.5
-        plt.scatter(
-            positions[node_id][0],
-            positions[node_id][1],
-            s=500,
-            color=color,
-            alpha=alpha
-        )
-        plt.text(
-            positions[node_id][0],
-            positions[node_id][1],
-            node_id,
-            ha='center',
-            va='center',
-            color='white'
-        )
+    print("\nActive Path:")
+    print("-----------")
     
-    plt.title("Node Activation Visualization")
-    plt.axis('off')
-    plt.tight_layout()
-    plt.savefig("node_activation.png")
-    plt.close()
+    # Show the activation path
+    if active_nodes:
+        path = " -> ".join(active_nodes)
+        print(f"{path}")
+    else:
+        print("No nodes activated")
 
 
 def main():
@@ -127,11 +100,11 @@ def main():
     
     print(f"Additionally activated nodes after propagation: {propagated_nodes}")
     
-    # Visualize the network
-    print("\nGenerating visualization...")
+    # Print network state
     all_active = active_nodes + propagated_nodes
-    visualize_activation(nodes, all_active)
-    print("Visualization saved as 'node_activation.png'")
+    print_network_state(nodes, all_active)
+    
+    print("\nExperiment complete!")
 
 
 if __name__ == "__main__":

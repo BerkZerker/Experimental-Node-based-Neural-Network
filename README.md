@@ -29,6 +29,46 @@ The project will follow a phased implementation strategy:
 3. **Multi-Modal Extension**: Gradually incorporate additional modalities (audio, image, video)
 4. **Evaluation & Optimization**: Benchmark against traditional architectures for efficiency and performance
 
+## Getting Started
+
+### Prerequisites
+- Python 3.8 or higher
+- Git
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/Experimental-Node-based-Neural-Network.git
+   cd Experimental-Node-based-Neural-Network
+   ```
+
+2. Create and activate a virtual environment:
+   ```
+   python -m venv venv
+   
+   # On Windows
+   venv\Scripts\activate
+   
+   # On macOS/Linux
+   source venv/bin/activate
+   ```
+
+3. Install dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+### Running Tests
+```
+python -m pytest
+```
+
+### Running Experiments
+```
+python experiments/simple_node_activation.py
+```
+
 ## Technical Considerations
 
 Several promising techniques will be explored:
@@ -50,7 +90,7 @@ Key challenges this project aims to address:
 
 ## Current Status
 
-This project is in the conceptual and research phase. No implementation code is available yet. Future updates will include prototype architecture designs and experimental results.
+This project is in the conceptual and research phase with initial prototyping underway. Future updates will include more comprehensive implementations and experimental results.
 
 ## Contribution
 
