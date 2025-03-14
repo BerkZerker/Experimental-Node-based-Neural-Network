@@ -1,0 +1,8 @@
+# Theoretical Neural Network Architecture
+
+Multi-modal neuron based "nodes", where nodes and groups of nodes represent different concepts and ideas. These nodes are connected and trained by the input of multi-modal data, so that a text transcript, a video, and an audio input all inputting at the same time are used. An event that occurs at the same time in the inputs is linked, and the association is made in the neural net. For example, a text that says "cats are good pets" and a audio input that says "cats are good pets" will train the model that "cats" in text = "cats" in voice. This will build a node / group of nodes to create the concept of what a "cat" is. Different attributes such as "good pets" will be associated with "cats" in the same manner. 
+
+This will allow the model to continuously learn from use without overwriting old data, since data is stored based on it's meaning. This should also allow the model to be more efficient since not all neurons in all layers need be activated when it is used. Rather only neurons that are connected will be used. Thus when a question is asked about cats the model will propagate through the neurons that are related to the input, and be able to "reason" finding where the different inputs coincide and where they differ.
+
+This theoretical architecture will likely use other already existing neural network architectures, but how these will integrate still needs to be figured out.
+
