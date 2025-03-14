@@ -1,0 +1,11 @@
+Here's a neural network idea, still using a GPT transformer style model. We cull unused nodes, or embeddings, from each process based on their distance or embedding strength to the token that is being inputted. 
+
+In practice, what this would look like is that embeddings that are not associated strongly with the current token being put in would be ignored from the processing and These weights would not be updated.
+
+The issue however is not processing power/speed but memory. We need a way to use the model without loading the entire model into memory. This would require the model to be dynamic an probably a way to adjust the matrix multiplication or else just turn culled embeddings into 1s or a number that would not change the output.
+
+Maybe use a chunking system where most recent chunks or in this case, embeddings are kept loaded into memory, while old chunks, or old embeddings are saved to the SSD. The SSD this would mean that only the most recently used ones are kept in memory for reducing the footprint of the model at the potential expense of speed. To make this work, the model would have to be able to be split up into a dynamically resizable model, That could be half saved to the SSD and half loaded into memory. 
+
+Maybe even implement a sort of LOD system where basic parameters can be always loaded in its memory, but niche details about certain things are still saved to the SSD. The issue with this would be how do we quantify which are which, and is this even possible to integrate with current architectures. 
+
+This system would likely result in an emergent system looking similar to a human brain but with a GPT architecture. Thus the model functions as a transformer but only different areas are activated at a time, and loaded into memory, resulting in a node based system emerging.
